@@ -1,0 +1,3 @@
+-- 3. User Forum Possession
+-- Pihak Stim membuat regulasi baru bahwa user hanya dapat membuat forum apabila ia memiliki aplikasi yang berkaitan. (Hal ini menjawab asumsi yang telah dibuat). Maka dari itu, pastikan bahwa pada data forum, semua user yang menginisiasi adalah user yang sudah memiliki aplikasi tersebut. Jika ada data yang tidak sesuai, pihak Stim akan melakukan take down terhadap forum terkait. Data forum tersebut akan dihapus, tentunya juga untuk seluruh post yang dikandungnya. Untuk memudahkan ketika hal ini terjadi lagi, implementasikan constraint pada tabel post untuk kondisi delete dan update yang mungkin terjadi kedepannya.
+
