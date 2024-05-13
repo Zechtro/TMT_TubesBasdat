@@ -5,15 +5,25 @@ CREATE TABLE pengguna_aktif (
     nama_depan VARCHAR(255) NOT NULL,
     nama_belakang VARCHAR(255) NOT NULL,
     tanggal_lahir DATE NOT NULL,
+    jumlah_aplikasi INT NOT NULL,
     level INT NOT NULL,
     PRIMARY KEY (`email_pengguna`)
 );
 
-INSERT INTO pengguna_aktif
-SELECT p.*
+INSERT INTO pengguna_aktif (email_pengguna, username, password, nama_depan, nama_belakang, tanggal_lahir, jumlah_aplikasi, level)
+SELECT 
+    p.email_pengguna, 
+    p.username, 
+    p.password, 
+    p.nama_depan, 
+    p.nama_belakang, 
+    p.tanggal_lahir, 
+    COUNT(ap.aplikasi) AS jumlah_aplikasi, 
+    p.level
 FROM pengguna p
 JOIN aplikasi_pengguna ap ON p.email_pengguna = ap.email_pengguna
-GROUP BY p.email_pengguna;
+GROUP BY 
+    p.email_pengguna;
 
 CREATE TABLE pengguna_pasif (
     email_pengguna VARCHAR(255) NOT NULL,
