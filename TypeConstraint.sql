@@ -1,4 +1,5 @@
--- Persoalan harga harus dipastikan di atas 0
+-- Persoalan harga harus dipastikan >= 0
+-- Persoalan rating harus dipastikan (5 >= r >= 0)
 
 -- tipe harga
 TYPE HRG POSSREP (INT)
