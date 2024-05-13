@@ -42,7 +42,7 @@ CREATE TABLE aplikasi_pengguna (
     waktu_terakhir TIMESTAMP NOT NULL,
     jumlah_achievement INT NOT NULL,
     user_rating INT NOT NULL,
-    CHECK (`user_rating` >= 0 AND user_rating <= 5),
+    -- CHECK (`user_rating` >= 0 AND user_rating <= 5),
     PRIMARY KEY (`judul_aplikasi`, `email_pengguna`),
     FOREIGN KEY (`judul_aplikasi`) REFERENCES `aplikasi`(`judul_aplikasi`),
     FOREIGN KEY (`email_pengguna`) REFERENCES `pengguna`(`email_pengguna`)
