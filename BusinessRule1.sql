@@ -17,42 +17,42 @@ CREATE TABLE aplikasi_harga (
     judul_aplikasi VARCHAR(255) NOT NULL,
     harga INT NOT NULL,
     PRIMARY KEY (`judul_aplikasi`),
-    FOREIGN KEY (`judul_aplikasi`) REFERENCES `aplikasi_info` (`judul aplikasi`)
+    FOREIGN KEY (`judul_aplikasi`) REFERENCES `aplikasi_info` (`judul_aplikasi`)
 );
 
 INSERT INTO aplikasi_harga (judul_aplikasi, harga)
 SELECT judul_aplikasi, harga
 FROM aplikasi;
 
-ALTER TABLE awards DROP FOREIGN KEY judul_vidgame;
+ALTER TABLE awards DROP FOREIGN KEY awards_ibfk_1;
 ALTER TABLE awards
 ADD FOREIGN KEY (`judul_vidgame`) REFERENCES `aplikasi_info` (`judul_aplikasi`);
 
-ALTER TABLE vidgame_genre DROP FOREIGN KEY judul_vidgame;
+ALTER TABLE vidgame_genre DROP FOREIGN KEY vidgame_genre_ibfk_1;
 ALTER TABLE vidgame_genre
 ADD FOREIGN KEY (`judul_vidgame`) REFERENCES `aplikasi_info` (`judul_aplikasi`);
 
-ALTER TABLE video_game DROP FOREIGN KEY judul_vidgame;
+ALTER TABLE video_game DROP FOREIGN KEY video_game_ibfk_1;
 ALTER TABLE video_game
 ADD FOREIGN KEY (`judul_vidgame`) REFERENCES `aplikasi_info` (`judul_aplikasi`);
 
-ALTER TABLE dlc DROP FOREIGN KEY judul_vidgame;
+ALTER TABLE dlc DROP FOREIGN KEY dlc_ibfk_1;
 ALTER TABLE dlc
 ADD FOREIGN KEY (`judul_vidgame`) REFERENCES `aplikasi_info` (`judul_aplikasi`);
 
-ALTER TABLE soundtrack DROP FOREIGN KEY judul_soundtrack;
+ALTER TABLE soundtrack DROP FOREIGN KEY soundtrack_ibfk_1;
 ALTER TABLE soundtrack
 ADD FOREIGN KEY (`judul_soundtrack`) REFERENCES `aplikasi_info` (`judul_aplikasi`);
 
-ALTER TABLE lagu DROP FOREIGN KEY judul_soundtrack;
+ALTER TABLE lagu DROP FOREIGN KEY lagu_ibfk_1;
 ALTER TABLE lagu
 ADD FOREIGN KEY (`judul_soundtrack`) REFERENCES `aplikasi_info` (`judul_aplikasi`);
 
-ALTER TABLE aplikasi_pengguna DROP FOREIGN KEY judul_aplikasi;
+ALTER TABLE aplikasi_pengguna DROP FOREIGN KEY aplikasi_pengguna_ibfk_1;
 ALTER TABLE awards
-ADD FOREIGN KEY (`judul_aplikasi`) REFERENCES `aplikasi_info` (`judul_aplikasi`);
+ADD FOREIGN KEY (`judul_vidgame`) REFERENCES `aplikasi_info` (`judul_aplikasi`);
 
-ALTER TABLE forum DROP FOREIGN KEY judul_aplikasi;
+ALTER TABLE forum DROP FOREIGN KEY forum_ibfk_2;
 ALTER TABLE forum
 ADD FOREIGN KEY (`judul_aplikasi`) REFERENCES `aplikasi_info` (`judul_aplikasi`);
 
