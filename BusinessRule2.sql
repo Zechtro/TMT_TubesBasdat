@@ -1,3 +1,4 @@
+-- Membuat relasi pengguna_aktif
 CREATE TABLE pengguna_aktif (
     email_pengguna VARCHAR(255) NOT NULL,
     username VARCHAR(255) NOT NULL UNIQUE,
@@ -10,6 +11,7 @@ CREATE TABLE pengguna_aktif (
     PRIMARY KEY (`email_pengguna`)
 );
 
+-- Memasukkan data yang dibutuhkan ke relasi pengguna_aktif dari relasi pengguna
 INSERT INTO pengguna_aktif (email_pengguna, username, `password`, nama_depan, nama_belakang, tanggal_lahir, jumlah_aplikasi, `level`)
 SELECT 
     p.email_pengguna, 
@@ -25,6 +27,7 @@ JOIN aplikasi_pengguna ap ON p.email_pengguna = ap.email_pengguna
 GROUP BY 
     p.email_pengguna;
 
+-- Membuat relasi pengguna_pasif
 CREATE TABLE pengguna_pasif (
     email_pengguna VARCHAR(255) NOT NULL,
     username VARCHAR(255) NOT NULL UNIQUE,
@@ -36,6 +39,7 @@ CREATE TABLE pengguna_pasif (
     PRIMARY KEY (`email_pengguna`)
 );
 
+-- Memasukkan data yang dibutuhkan ke relasi pengguna_pasif dari relasi pengguna
 INSERT INTO pengguna_pasif
 SELECT p.*
 FROM pengguna p
