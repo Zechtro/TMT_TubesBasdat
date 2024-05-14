@@ -14,7 +14,24 @@ WHERE d.harga_dlc > (
 );
 
 DELIMITER $$
-CREATE TRIGGER validasi_harga_dlc
+CREATE TRIGGER validasi_harga_dlc_on_update
+BEFORE UPDATE ON dlc
+FOR EACH ROW
+BEGIN
+    DECLARE harga_game INT;
+
+    SELECT harga INTO harga_game
+    FROM aplikasi a
+    WHERE a.judul_aplikasi = NEW.judul_vidgame;
+
+    IF NEW.harga_dlc > harga_game THEN
+        SIGNAL SQLSTATE '45000'
+        SET MESSAGE_TEXT = 'Harga DLC tidak boleh lebih mahal dari harga game';
+    END IF;
+END $$
+DELIMITER ;
+DELIMITER $$
+CREATE TRIGGER validasi_harga_dlc_on_insert
 BEFORE INSERT ON dlc
 FOR EACH ROW
 BEGIN
