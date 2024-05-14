@@ -1,3 +1,4 @@
+-- Membuat fungsi untuk menghitung umur berdasarkan tanggal lahir pengguna, dihitung sampai tanggal hari ini (tergantung nge-run quernya kapan)
 DELIMITER $$
 CREATE FUNCTION calculate_age (initDate DATETIME)
 RETURNS INT
@@ -17,6 +18,7 @@ BEGIN
 END$$
 DELIMITER ;
 
+-- Menghapus kepemilikan aplikasi yang rilis tahun 2024 keatas dengan pemilik (pengguna) yang berumur dibawah 18 tahun
 DELETE FROM aplikasi_pengguna
 WHERE judul_aplikasi IN (
     SELECT judul_aplikasi
@@ -28,6 +30,7 @@ WHERE judul_aplikasi IN (
     WHERE calculate_age(tanggal_lahir) < 18
 );
 
+-- Membuat trigger untuk menolak pengguna yang berumur dibawah 18 tahun memiliki aplikasi yang diluncurkan tahun 2024 keatas
 DELIMITER $$
 CREATE OR REPLACE TRIGGER access_restriction
 BEFORE INSERT ON aplikasi_pengguna
@@ -48,6 +51,7 @@ BEGIN
 END $$
 DELIMITER ;
 
+-- YANG BAGIAN INI GAPERLU DIMASUKIN LAPORAN, CUMAN BUAT TESTING PRIBADI AJA
 -- Pre-Query
 
 -- Cari email_pengguna yang umurnya < 18
