@@ -1,8 +1,8 @@
 -- Implementasi Sintaks PPT (ini emang jadi ga jelas sintaks nya gegara ngikutin PPT)
-CONSTRAINT prevent_status_friends_to_pending IS_EMPTY
-( ( ( status_pertemanan' (email_pengguna, email_teman, status) RENAME status AS status')
-    JOIN status_pertemanan (email_pengguna, email_teman, status) )
-    WHERE status' = 'FRIENDS' AND status = 'PENDING' );
+-- CONSTRAINT prevent_status_friends_to_pending IS_EMPTY
+-- ( ( ( status_pertemanan (email_pengguna, email_teman, status) RENAME status AS status)
+--     JOIN status_pertemanan (email_pengguna, email_teman, status) )
+--     WHERE status = 'FRIENDS' AND status = 'PENDING' );
 
 DELIMITER $$
 CREATE TRIGGER prevent_status_friends_to_pending
@@ -17,10 +17,10 @@ END $$
 DELIMITER ;
 
 -- Implementasi Sintaks PPT (ini emang jadi ga jelas sintaks nya gegara ngikutin PPT)
-CONSTRAINT prevent_status_block_to_pending IS_EMPTY
-( ( ( status_pertemanan' (email_pengguna, email_teman, status) RENAME status AS status')
-    JOIN status_pertemanan (email_pengguna, email_teman, status) )
-    WHERE status' = 'BLOCK' AND status = 'PENDING' );
+-- CONSTRAINT prevent_status_block_to_pending IS_EMPTY
+-- ( ( ( status_pertemanan (email_pengguna, email_teman, status) RENAME status AS status)
+--     JOIN status_pertemanan (email_pengguna, email_teman, status) )
+--     WHERE status = 'BLOCK' AND status = 'PENDING' );
 
 -- asumsi block tidak menghapus teman, jika di-unblock maka status akan menjadi FRIENDS
 DELIMITER $$

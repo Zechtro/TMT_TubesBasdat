@@ -1,11 +1,15 @@
--- Semua durasi lagu di bawah 5 detik akan dikosongkan
--- Semua konten_opini yang berisi string kosong akan dikosongkan
+-- Implementasi Sintaks PPT
+-- deskripsi VARCHAR(255) UNIQUE
+-- CONSTRAINT deskripsi_value
+-- IS_EMPTY (developer WHERE deskripsi = NULL)
 
--- RELC1
-CONSTRAINT RELC1
-IS_EMPTY (lagu WHERE durasi < 5);
+-- Implementasi SQL
+deskripsi VARCHAR(255) UNIQUE NOT NULL;
 
--- RELC2
-CONSTRAINT RELC2
-IS_EMPTY (post WHERE konten_opini = "");
+-- Implementasi Sintaks PPT
+-- CONSTRAINT FREE
+-- IS_EMPTY (aplikasi WHERE deskripsi = "%free to play%" 
+-- && harga != 0);
 
+-- Implementasi SQL
+CHECK (deskripsi NOT LIKE "%free to play%" OR harga = 0);

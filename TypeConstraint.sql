@@ -1,18 +1,13 @@
--- Persoalan harga harus dipastikan >= 0
--- Persoalan rating harus dipastikan (5 >= r >= 0)
+-- Implementasi Sintaks PPT
+-- TYPE status_value POSSREP (VARCHAR)
+--     CONSTRAINT valid_values (status) = 'FRIENDS' || (status) = 'PENDING' || (status) = 'BLOCKED'
 
--- tipe harga
--- TYPE HRG POSSREP (INT)
--- CONSTRAINT tipe_harga (HRG) >= 0;
+-- Implementasi SQL
+status ENUM('FRIENDS','PENDING','BLOCKED');
 
-ALTER TABLE aplikasi
-ADD CONSTRAINT chk_harga
-CHECK (harga >= 0);
+-- Implementasi Sintaks PPT
+-- TYPE tipe_vote_value POSSREP (VARCHAR)
+--     CONSTRAINT valid_values (tipe_vote) = 'DOWN' || (tipe_vote) = 'UP'
 
--- tipe rating
--- TYPE RTG POSSREP (INT)
--- CONSTRAINT tipe_rating ((RTG) >= 0 AND (RTG) <= 5);
-
-ALTER TABLE aplikasi_pengguna
-ADD CONSTRAINT chk_user_rating
-CHECK (user_rating >= 0 AND user_rating <= 5);
+-- Implementasi SQL
+tipe_vote ENUM('UP', 'DOWN');
